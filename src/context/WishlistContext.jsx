@@ -2,7 +2,7 @@ import { createContext, useContext, useReducer, useEffect } from 'react';
 
 const WishlistContext = createContext();
 
-// Action types
+
 const WISHLIST_ACTIONS = {
   ADD_TO_WISHLIST: 'ADD_TO_WISHLIST',
   REMOVE_FROM_WISHLIST: 'REMOVE_FROM_WISHLIST',
@@ -10,13 +10,12 @@ const WISHLIST_ACTIONS = {
   CLEAR_WISHLIST: 'CLEAR_WISHLIST'
 };
 
-// Initial state
+
 const initialState = {
   items: [],
   isLoading: false
 };
 
-// Wishlist reducer
 const wishlistReducer = (state, action) => {
   switch (action.type) {
     case WISHLIST_ACTIONS.ADD_TO_WISHLIST:
@@ -53,10 +52,9 @@ const wishlistReducer = (state, action) => {
   }
 };
 
-// Local storage key
 const WISHLIST_STORAGE_KEY = 'wishlist-items';
 
-// Helper functions for localStorage
+
 const loadWishlistFromStorage = () => {
   try {
     const stored = localStorage.getItem(WISHLIST_STORAGE_KEY);
@@ -75,24 +73,24 @@ const saveWishlistToStorage = (items) => {
   }
 };
 
-// Wishlist Provider Component
+
 export const WishlistProvider = ({ children }) => {
   const [state, dispatch] = useReducer(wishlistReducer, initialState);
 
-  // Load wishlist from localStorage on mount
+  
   useEffect(() => {
     const storedItems = loadWishlistFromStorage();
     dispatch({ type: WISHLIST_ACTIONS.LOAD_WISHLIST, payload: storedItems });
   }, []);
 
-  // Save to localStorage whenever wishlist changes
+
   useEffect(() => {
     if (state.items.length > 0 || localStorage.getItem(WISHLIST_STORAGE_KEY)) {
       saveWishlistToStorage(state.items);
     }
   }, [state.items]);
 
-  // Action creators
+  
   const addToWishlist = (product) => {
     dispatch({ type: WISHLIST_ACTIONS.ADD_TO_WISHLIST, payload: product });
   };
@@ -141,7 +139,7 @@ export const WishlistProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use wishlist context
+
 export const useWishlist = () => {
   const context = useContext(WishlistContext);
   if (!context) {

@@ -10,14 +10,14 @@ const WishlistCard = ({ product }) => {
     removeFromWishlist(product.id);
     setShowToast(true);
     
-    // Hide toast after 2 seconds
+    
     setTimeout(() => {
       setShowToast(false);
     }, 2000);
   };
 
   const handleMoveToCart = () => {
-    // This would integrate with a cart feature if implemented
+    
     alert(`"${product.name}" would be added to cart! (Cart feature not implemented yet)`);
   };
 

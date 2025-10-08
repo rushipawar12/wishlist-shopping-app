@@ -1,4 +1,4 @@
-/* Reset and base styles for full-screen layout */
+
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +20,7 @@ html, body {
   padding: 0;
 }
 
-/* Basic typography */
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -28,7 +28,6 @@ body {
   background-color: #f5f7fa;
 }
 
-/* Remove default button styles to let components handle their own styling */
 button {
   font-family: inherit;
 }

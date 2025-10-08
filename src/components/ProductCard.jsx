@@ -13,7 +13,7 @@ const ProductCard = ({ product }) => {
     setToastMessage(message);
     setShowToast(true);
     
-    // Hide toast after 2 seconds
+    
     setTimeout(() => {
       setShowToast(false);
     }, 2000);
